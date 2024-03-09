@@ -1,3 +1,6 @@
 [submodule "lvgl"]
 	path = lvgl
 	url = https://github.com/lvgl/lvgl.git
+[submodule "PMTiles"]
+	path = PMTiles
+	url = https://github.com/protomaps/PMTiles.git
