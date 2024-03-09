@@ -8,6 +8,7 @@ mkdir build
 cd build
 cmake -DLV_USE_DRAW_SDL=ON ..
 make -j
+cd ..
 bin/main vector_graphic
 
 ```
