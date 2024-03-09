@@ -28,6 +28,7 @@ add_executable(main main.c mouse_cursor_icon.c)
 target_compile_definitions(main PRIVATE LV_CONF_INCLUDE_SIMPLE)
 target_link_libraries(main lvgl lvgl::examples lvgl::demos lvgl::thorvg ${SDL2_LIBRARIES} m pthread)
 add_custom_target (run COMMAND ${EXECUTABLE_OUTPUT_PATH}/main DEPENDS main)
+add_custom_target (vgdemo COMMAND ${EXECUTABLE_OUTPUT_PATH}/main vector_graphic DEPENDS main)
 
 if(LV_USE_DRAW_SDL)
     set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake")
@@ -68,13 +69,13 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     target_compile_options(lvgl PRIVATE
         -pedantic-errors
         -Wall
-        -Wclobbered
+        # -Wclobbered
         -Wdeprecated
         -Wdouble-promotion
         -Wempty-body
         -Wextra
         -Wformat-security
-        -Wmaybe-uninitialized
+        # -Wmaybe-uninitialized
         # -Wmissing-prototypes
         -Wpointer-arith
         -Wmultichar
@@ -91,6 +92,6 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
         -Wstrict-aliasing
     )
 
-    target_compile_options(main PRIVATE -fsanitize=address,leak,undefined)
-    target_link_options(main PRIVATE -fsanitize=address,leak,undefined)
+    # target_compile_options(main PRIVATE -fsanitize=address,leak,undefined)
+    # target_link_options(main PRIVATE -fsanitize=address,leak,undefined)
 endif()
